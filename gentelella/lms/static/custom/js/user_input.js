@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $('#userinput').on('input', function() {
+    $('#userinput').on('keypress', function() {
         var textValue = $(this).val();
 
         $.ajax({

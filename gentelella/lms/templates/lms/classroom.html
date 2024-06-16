@@ -145,6 +145,7 @@
                       <i>More</i>
 
                       <div style="display: flex; justify-content: space-between;">
+
                           <div class="radio">
                               <label class="">
                                   <div onclick="displayLightbox('Your text content here')" class="iradio_flat-green"  style="position: relative;">
@@ -354,43 +355,47 @@
   <script src="/static/vendors/raphael/raphael.min.js"></script>
   <script src="/static/vendors/morris.js/morris.min.js"></script>
   <script src="/static/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
-  <script src="/static/custom/js/prompt_actions.js"></script>
+
+  <script src="/static/custom/js/lightbox.js"></script>
   <script src="/static/custom/js/user_input.js"></script>
+  <script src="/static/custom/js/ollama_response.js"></script>
+
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const userInput = document.getElementById('userinput');
-        const details = document.getElementById('details');
+<!--    document.addEventListener('DOMContentLoaded', function () {-->
+<!--        const userInput = document.getElementById('userinput');-->
+<!--        const details = document.getElementById('details');-->
 
-        userInput.addEventListener('change', function () {
-            const text = userInput.value;
+<!--        userInput.addEventListener('change', function () {-->
+<!--            const text = userInput.value;-->
 
-            fetch("{% url 'index' %}", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    'X-CSRFToken': '{{ csrf_token }}',
-                },
-                body: new URLSearchParams({
-                    'text': text
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                details.innerHTML=(data.response)
+<!--            fetch("{% url 'index' %}", {-->
+<!--                method: 'POST',-->
+<!--                headers: {-->
+<!--                    'Content-Type': 'application/x-www-form-urlencoded',-->
+<!--                    'X-CSRFToken': '{{ csrf_token }}',-->
+<!--                },-->
+<!--                body: new URLSearchParams({-->
+<!--                    'text': text-->
+<!--                })-->
+<!--            })-->
+<!--            .then(response => response.json())-->
+<!--            .then(data => {-->
+<!--                console.log(data.response.response)-->
+<!--                details.innerHTML=data.response.response-->
 
-                /**
-                if (data.status === 'ok') {
-                    alert(data.response)
-                    details.innerHTML = data.response;
-                } else {
-                    details.innerHTML = 'Error: ' + data.error;
-                }
-                **/
-            })
-            .catch(error => {
-                details.innerHTML = 'Error: ' + error;
-            });
-        });
-    });
+<!--                /**-->
+<!--                if (data.status === 'ok') {-->
+<!--                    alert(data.response)-->
+<!--                    details.innerHTML = data.response;-->
+<!--                } else {-->
+<!--                    details.innerHTML = 'Error: ' + data.error;-->
+<!--                }-->
+<!--                **/-->
+<!--            })-->
+<!--            .catch(error => {-->
+<!--                details.innerHTML = 'Error: ' + error;-->
+<!--            });-->
+<!--        });-->
+<!--    });-->
   </script>
 {% endblock javascripts %}

@@ -18,39 +18,21 @@ function displayLightbox(content) {
     contentDiv.style.backgroundColor = '#fff';
     contentDiv.style.padding = '20px';
     contentDiv.style.borderRadius = '15px';
+    contentDiv.style.maxWidth = '80%'; // Adjust as needed
+    contentDiv.style.maxHeight = '80%';
+    contentDiv.style.overflowY = 'auto'; // Allow scrolling if content is too long
 
-    // Check if content is a URL
-    if (content.startsWith('http')) {
-        // Create video element
-        let video = document.createElement('video');
-        video.src = content;
-        video.controls = true;
-        video.style.width = '100%';
-        video.style.height = 'auto';
+    // Set content as HTML directly
+    contentDiv.innerHTML = content;
 
-        // Add video to content
-        contentDiv.appendChild(video);
-
-        // Calculate video duration
-        video.onloadedmetadata = function() {
-            let duration = video.duration;
-            let minutes = Math.floor(duration / 60);
-            let seconds = Math.floor(duration % 60);
-            let durationText = document.createTextNode(minutes + ' min ' + seconds + ' sec');
-            contentDiv.appendChild(durationText);
-        };
-    } else {
-        // Add HTML content
-        contentDiv.innerHTML = content;
-    }
-
-    // Create buttons
+    // Create close button
     let closeButton = document.createElement('button');
     closeButton.textContent = 'Close';
     closeButton.onclick = function() {
         lightbox.style.display = 'none';
     };
 
+    // Create expand button
     let expandButton = document.createElement('button');
     expandButton.textContent = 'Expand';
     expandButton.onclick = function() {
@@ -58,6 +40,7 @@ function displayLightbox(content) {
         contentDiv.style.height = '100%';
     };
 
+    // Create minimize button
     let minimizeButton = document.createElement('button');
     minimizeButton.textContent = 'Minimize';
     minimizeButton.onclick = function() {
@@ -65,12 +48,12 @@ function displayLightbox(content) {
         contentDiv.style.height = '50%';
     };
 
-    // Add buttons to content
+    // Append buttons to content div
     contentDiv.appendChild(closeButton);
     contentDiv.appendChild(expandButton);
     contentDiv.appendChild(minimizeButton);
 
-    // Add content to lightbox
+    // Append content div to lightbox
     lightbox.appendChild(contentDiv);
 
     // Add lightbox to body
