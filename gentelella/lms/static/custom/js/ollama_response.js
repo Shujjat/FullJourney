@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(data => {
 
             details_value=data.response.response
+            alert(details_value)
             details_length=details_value.length
 
             threshold=299
@@ -66,14 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
 
-            /**
-            if (data.status === 'ok') {
-                alert(data.response)
-                details.innerHTML = data.response;
-            } else {
-                details.innerHTML = 'Error: ' + data.error;
-            }
-            **/
+
         })
         .catch(error => {
             details.innerHTML = 'Error: ' + error;

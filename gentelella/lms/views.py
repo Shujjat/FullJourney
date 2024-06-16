@@ -1,10 +1,8 @@
-import subprocess
+from anyio.streams import file
+from django import template
+from markdown import markdown
 
-import ollama
-from django.http import JsonResponse
-
-from django.http import HttpResponse
-from transformers import AutoModelForCausalLM, AutoTokenizer
+register = template.Library()
 from django.template import loader
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -49,32 +47,41 @@ def index(request):
 
 def run_llama_model(user_prompt):
     return get_dummy_response()
-    # try:
 
-    #
-    #
-    #     prompt = (
-    #         "Generate a response in the following format:\n\n"
-    #         "1. Introduction\n"
-    #         "2. References\n"
-    #         "3. Detailed Response\n"
-    #         "4. Related Questions with Answers\n"
-    #         "5. Include images and graphics where required\n\n"
-    #         "Question: " + str(user_prompt) + "\n\n"
-    #     )
-    #
-    #     response = ollama.generate(model='llama3', prompt=prompt)
-    #
-    #     # Check if 'response' key exists and return it
-    #     if 'response' in response:
-    #         return response['response']
-    #
-    #     # If 'response' key does not exist, return the entire response
-    #     return response
-    #
-    # except Exception as e:
-    #     logger.error('Exception occurred: %s', str(e))
-    #     return {'error': str(e)}
+    try:
+
+        import ollama
+
+        prompt = (
+            "Generate a response in the following format:\n\n"
+            "1. Introduction\n"
+            "2. References\n"
+            "3. Detailed Response\n"
+            "4. Related Questions with Answers\n"
+            "5. Include images and graphics where required\n\n"
+            "6. Response should be in HTML, but just directly the required tags, no body or its sperior tags \n\n"
+            "7. headings and bullets should be uisng html\n\n"
+            "8. Give images where required and also a separate list of images \n\n" 
+            "9. Give references where required and also a separate list of references \n\n" 
+            "10. Give videos where required and also a separate list of references \n\n" 
+            "11. Do not use * for list items, use li \n\n" 
+            "12. Do not use ** **  for headins, use <h2>\n\n" 
+            "13. Use languages= {english}\n\n" 
+            
+            "Question: " + str(user_prompt) + "\n\n"
+        )
+
+        response = ollama.generate(model='llama3', prompt=prompt)
+
+        # Check if 'response' key exists and return it
+
+
+        # If 'response' key does not exist, return the entire response
+        return response
+
+    except Exception as e:
+        logger.error('Exception occurred: %s', str(e))
+        return {'error': str(e)}
 
 def get_dummy_response():
     return {
@@ -189,4 +196,7 @@ def get_dummy_response():
                 * A diagram illustrating the electric field lines around a charged particle
                 * A graphic comparing the forces between different pairs of charges (e.g., like-like, opposite-opposite, etc.)
         """
+
+
+
     }
