@@ -1,0 +1,106 @@
+
+<canvas id="gameCanvas" width="800" height="600"></canvas>
+<script>
+// Initialize canvas and context
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
+
+// Particle properties
+let particle1 = {
+    x: canvas.width / 4,
+    y: canvas.height / 2,
+    radius: 20,
+    charge: 1
+};
+
+let particle2 = {
+    x: (3 * canvas.width) / 4,
+    y: canvas.height / 2,
+    radius: 20,
+    charge: -1
+};
+
+// Coulomb constant (k) for visualization purposes
+const k = 10000;
+
+// Drawing function
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Draw particle 1
+    ctx.beginPath();
+    ctx.arc(particle1.x, particle1.y, particle1.radius, 0, Math.PI * 2);
+    ctx.fillStyle = particle1.charge > 0 ? 'blue' : 'red';
+    ctx.fill();
+    ctx.closePath();
+
+    // Draw particle 2
+    ctx.beginPath();
+    ctx.arc(particle2.x, particle2.y, particle2.radius, 0, Math.PI * 2);
+    ctx.fillStyle = particle2.charge > 0 ? 'blue' : 'red';
+    ctx.fill();
+    ctx.closePath();
+
+    // Calculate and draw force vector between particles
+    let dx = particle2.x - particle1.x;
+    let dy = particle2.y - particle1.y;
+    let distance = Math.sqrt(dx * dx + dy * dy);
+
+    // Avoid division by zero and extremely close particles
+    if (distance < 5) distance = 5;
+
+    let forceMagnitude = (k * particle1.charge * particle2.charge) / (distance * distance);
+
+    // Normalize direction vector and scale the force for visualization
+    let forceX = (dx / distance) * forceMagnitude;
+    let forceY = (dy / distance) * forceMagnitude;
+
+    // Draw force vector
+    ctx.beginPath();
+    ctx.moveTo(particle1.x, particle1.y);
+    ctx.lineTo(particle1.x + forceX, particle1.y + forceY);
+    ctx.strokeStyle = 'green';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    ctx.closePath();
+}
+
+// Update function
+function update() {
+    // Handle user input (move charges with arrow keys, toggle charge with spacebar)
+    if (keys.ArrowUp) {
+        particle1.y -= 2;
+    }
+    if (keys.ArrowDown) {
+        particle1.y += 2;
+    }
+    if (keys.ArrowLeft) {
+        particle1.x -= 2;
+    }
+    if (keys.ArrowRight) {
+        particle1.x += 2;
+    }
+    if (keys.Space) {
+        particle1.charge *= -1;
+        keys.Space = false; // prevent continuous toggling
+    }
+
+    // Redraw canvas
+    draw();
+
+    // Request next animation frame
+    requestAnimationFrame(update);
+}
+
+// Keyboard input handling
+let keys = {};
+window.addEventListener('keydown', function(e) {
+    keys[e.code] = true;
+});
+window.addEventListener('keyup', function(e) {
+    keys[e.code] = false;
+});
+
+// Start game loop
+update();
+</script>

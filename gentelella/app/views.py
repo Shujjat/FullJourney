@@ -5,7 +5,7 @@ from django.http import HttpResponse
 
 def index(request):
     context = {}
-    template = loader.get_template('app/index.html')
+    template = loader.get_template('lms/index.html')
     return HttpResponse(template.render(context, request))
 
 
@@ -16,6 +16,6 @@ def gentella_html(request):
 
     # Pick out the html file name from the url. And load that template.
     load_template = request.path.split('/')[-1]
-    template = loader.get_template('app/' + load_template)
+    template = loader.get_template('lms/' + load_template)
     return HttpResponse(template.render(context, request))
 

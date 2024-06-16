@@ -19,8 +19,9 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
-    # app/ -> Genetelella UI and resources
-    url(r'^app/', include('app.urls')),
-    url(r'^', include('app.urls')),
+    # lms/ -> LMS UI and resources
+    url(r'^lms/', include('lms.urls')),
+    url(r'^lms/', include('lms.urls')),
+    url(r'^', include('lms.urls')),
 
 ]
