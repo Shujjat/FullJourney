@@ -41,7 +41,6 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(data => {
 
             details_value=data.response.response
-            alert(details_value)
             details_length=details_value.length
 
             threshold=299
