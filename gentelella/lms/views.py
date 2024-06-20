@@ -1,11 +1,12 @@
+import json
+
 from django import template
 register = template.Library()
 from django.template import loader
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
-from google.cloud import texttospeech
-import os
+import ollama
 import logging
 logger = logging.getLogger(__name__)
 
@@ -23,7 +24,7 @@ def index(request):
         #logger.info('You typed: %s', text)
         if len(text)>3:
         # Call the run_llama_model function with the user's text
-            llama_response = run_llama_model(user_prompt=text)
+            llama_response = run_llama_model(user_prompt=text,use_dummy_response=False)
 
 
             logger.info('Received Response %s', llama_response)
@@ -44,43 +45,54 @@ def index(request):
 
 
 
-def run_llama_model(user_prompt):
-    return get_dummy_response()
+def run_llama_model(user_prompt,use_dummy_response=True):
 
-    try:
+    if use_dummy_response:
+        return get_dummy_response()
+    else:
+        try:
+            background_hint="Class Physics for Inter Part 1, Lahore Board, Punjab Pakistan, the learner is atmost 18 years of age"
+            avoid='nudity and foul language'
 
-        import ollama
+            prompt = (
+                    "Generate a response in the following format:\n\n"
+                    "1. Introduction\n"
+                    "2. References\n"
+                    "3. Detailed Response\n"
+                    "4. Related Questions with Answers\n"
+                    "5. Include images and graphics where required\n\n"
+                    "6. Provide examples or case studies where applicable\n\n"
+                    "7. Highlight key points or takeaways\n\n"
+                    "8. Give images where required and also a separate list of images \n\n"
+                    "9. Give references where required and also a separate list of references videos \n\n"
+                    "10. Give videos where required and also a separate list of references of videos\n\n"
+                    "11. Include numerical problems with solutions as a separate item\n\n"
+                    "12. Provide this response in these languages= {english,urdu}\n\n"
+                    "13. where possible include a game in Javascript as a separate item\n\n"
+                    "14. Include prompt for AI generator to create AI generated video as a separate item\n\n"
+                    "15. use this background of the user: " + background_hint + " \n\n"
+                    "16. avoid " + avoid + "\n\n"
+                    "Question: " + str(user_prompt) + "\n\n"
+            )
+            print(prompt)
+            response = ollama.generate(model='llama3', prompt=prompt)
 
-        prompt = (
-            "Generate a response in the following format:\n\n"
-            "1. Introduction\n"
-            "2. References\n"
-            "3. Detailed Response\n"
-            "4. Related Questions with Answers\n"
-            "5. Include images and graphics where required\n\n"
-            "6. Response should be in HTML, but just directly the required tags, no body or its sperior tags \n\n"
-            "7. headings and bullets should be using html\n\n"
-            "8. Give images where required and also a separate list of images \n\n" 
-            "9. Give references where required and also a separate list of references videos \n\n" 
-            "10. Give videos where required and also a separate list of references of videos\n\n" 
-            "11. Do not use * for list items, use li \n\n" 
-            "12. Do not use ** **  for headins, use <h2>\n\n" 
-            "13. Use languages= {english}\n\n" 
-            "14. where possible include a game in Javascript as a separate item\n\n" 
-            "15. Include numerical problems with solutions as a separate item\n\n"
-            "15. Include instructions to create AI generated video as a separate item\n\n"
-            "Question: " + str(user_prompt) + "\n\n"
-        )
 
-        response = ollama.generate(model='llama3', prompt=prompt)
+            if isinstance(response, dict):
+                print("The response is a dictionary. Here are the keys:")
+                for key in response.keys():
+                    print(key)
+            else:
+                print(f"The response is of type: {type(response)}")
 
-        # with open("response.txt", "w") as file:
-        #     file.write(str(response))
-        return response
+            with open("response.txt", "w+") as file:
+                file.write(str(response))
+                logger.error(str(response))
+            return response
 
-    except Exception as e:
-        logger.error('Exception occurred: %s', str(e))
-        return {'error': str(e)}
+        except Exception as e:
+            logger.error('Exception occurred: %s', str(e))
+            return {'error': str(e)}
 
 
 
