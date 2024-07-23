@@ -12,6 +12,8 @@ urlpatterns = [
     path('lms/ps/', views.index, name='ps'),
     path('', views.index, name='index'),
     path('lms/read_pdf/', views.read_pdf, name='read_pdf'),
+    path('lms/extract_chapters_and_items/', views.extract_chapters_and_items, name='extract_chapters_and_items'),
+    path('lms/extract_topics_from_file/', views.extract_topics_from_file, name='extract_topics_from_file'),
 
 
 ]

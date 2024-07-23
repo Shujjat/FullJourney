@@ -18,8 +18,6 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-
-    # lms/ -> LMS UI and resources
     url(r'^lms/', include('lms.urls')),
     url(r'^lms/', include('lms.urls')),
     url(r'^', include('lms.urls')),

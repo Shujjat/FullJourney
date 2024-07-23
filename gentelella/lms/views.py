@@ -1,3 +1,5 @@
+import os
+
 import fitz
 import re
 from PIL import Image
@@ -255,13 +257,34 @@ def read_pdf(request):
     except Exception as e:
         # Handle exceptions if any occur
         return JsonResponse({'error': str(e)}, status=500)
+@csrf_exempt
+def extract_topics_from_file( text_file_path=None):
 
+    text_file_path = 'gentelella/lms/books/Inter-I-Physics.txt'
+    topics_file_path = 'gentelella/lms/books/topics-Inter-I-Physics.txt'
+    if not os.path.isfile(text_file_path):
+        raise FileNotFoundError(f"The file {text_file_path} does not exist.")
 
+    with open(text_file_path, 'r', encoding='utf-8') as file:
+        file_content = file.read()
+
+    # Create a prompt to ask the AI to extract topics
+    prompt = f"Extract all distinct topics from the following text:\n\n{file_content}"
+
+    try:
+        response = generate_response(prompt)
+
+        with open(topics_file_path, "w+") as file:
+            file.write(str(response))
+        return response
+    except Exception as e:
+        raise RuntimeError(f"Error generating response: {e}")
 @csrf_exempt
 def extract_chapters_and_items(text=None, text_file_path=None):
-    file_path = 'gentelella/lms/Inter-I-Physics.txt'
-    if file_path:
-        with open(file_path, 'r', encoding='utf-8') as file:
+
+    text_file_path = 'gentelella/lms/books/Inter-I-Physics.txt'
+    if text_file_path:
+        with open(text_file_path, 'r', encoding='utf-8') as file:
             text = file.read()
 
         # Debug: Print type of text
@@ -294,6 +317,7 @@ def extract_chapters_and_items(text=None, text_file_path=None):
         # Match items
         item_match = item_pattern.match(line)
         if item_match and current_chapter:
+            print(current_chapter)
             current_chapter["items"].append(item_match.group(1))
 
     # Append the last chapter
@@ -301,3 +325,6 @@ def extract_chapters_and_items(text=None, text_file_path=None):
         chapters.append(current_chapter)
 
     return chapters
+def generate_response(prompt):
+    response = ollama.generate(model='llama3', prompt=prompt)
+    return response
