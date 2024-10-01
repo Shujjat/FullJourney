@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyScript in Django</title>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css">
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+</head>
+<body>
+    <h1>Hello, PyScript in Django!</h1>
+    <div>
+        <label for="name">Enter your name: </label>
+        <input type="text" id="name" name="name">
+        <button id="greetButton">Greet</button>
+    </div>
+    <p id="greeting"></p>
+
+    <py-script>
+        from pyodide.ffi import create_proxy
+        from js import document
+
+        def greet(event):
+            name = document.getElementById('name').value
+            greeting_element = document.getElementById('greeting')
+            greeting_element.innerHTML = f'Hello, {name} from PyScript!'
+
+        greet_proxy = create_proxy(greet)
+        button = document.getElementById('greetButton')
+        button.addEventListener('click', greet_proxy)
+    </py-script>
+</body>
+</html>

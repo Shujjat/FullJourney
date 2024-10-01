@@ -1,0 +1,7 @@
+[1718124519] Log start
+[1718124519] Cmd: llama --hf-repo openbmb/MiniCPM-Llama3-V-2_5-gguf --hf-file ggml-model-BF16.gguf -p "I believe the meaning of life is" -n 128
+[1718124519] main: build = 3130 (4bfe50f7)
+[1718124519] main: built with Apple clang version 15.0.0 (clang-1500.3.9.4) for arm64-apple-darwin23.4.0
+[1718124519] main: seed  = 1718124519
+[1718124519] main: llama backend init
+[1718124519] main: load the model and apply lora adapter, if any

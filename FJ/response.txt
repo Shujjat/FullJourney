@@ -1,0 +1,146 @@
+**English Response**
+
+**Introduction**
+Coulomb's Law is a fundamental concept in physics that explains the relationship between two charged particles. It is a crucial tool for understanding electric forces and charges.
+
+**References**
+
+* Feynman, R. P. (1963). The Feynman Lectures on Physics.
+* Halliday, D., Resnick, R., & Walker, J. (2013). Fundamentals of Physics.
+* Griffiths, D. J. (2008). Introduction to Electrodynamics.
+
+**Detailed Response**
+Coulomb's Law states that the force between two charged particles is proportional to the product of their charges and inversely proportional to the square of the distance between them. The law can be mathematically represented as:
+
+F = k \* (q1 \* q2) / r^2
+
+where F is the force, k is Coulomb's constant, q1 and q2 are the charges of the two particles, and r is the distance between them.
+
+**Example 1: Two identical charged spheres**
+Suppose we have two identical charged spheres with a charge of +3 μC each. If they are placed 5 cm apart, what is the force of attraction between them?
+
+Using Coulomb's Law, we can calculate the force:
+
+F = k \* (3 μC) ^2 / (0.05 m) ^2
+
+F ≈ 9.8 × 10^-7 N
+
+**Example 2: A charged particle and a neutral sphere**
+A charged particle with a charge of -5 μC is placed 1 cm away from a neutral metal sphere. What is the force of attraction between them?
+
+Using Coulomb's Law, we can calculate the force:
+
+F = k \* (-5 μC) \* (0) / (0.01 m) ^2
+
+F ≈ 0 N
+
+**Related Questions with Answers**
+
+Q: How does Coulomb's Law relate to other fundamental forces in physics?
+A: Coulomb's Law is one of the four fundamental forces in physics, along with gravity, electromagnetism, and the strong nuclear force.
+
+Q: What are some applications of Coulomb's Law in everyday life?
+A: Coulomb's Law has many practical applications, such as electric motors, generators, and transformers.
+
+**Images**
+
+[Image 1: Diagram showing two charged particles interacting]
+[Image 2: Graph illustrating the relationship between distance and force]
+
+**Separate List of Images**
+
+1. [Diagram showing two charged particles interacting]
+2. [Graph illustrating the relationship between distance and force]
+
+**Videos**
+[Coulomb's Law explanation video by 3Blue1Brown](https://www.youtube.com/watch?v=7Gk6Wj9iM4E)
+
+**Separate List of References Videos**
+
+1. [Coulomb's Law explanation video by 3Blue1Brown](https://www.youtube.com/watch?v=7Gk6Wj9iM4E)
+2. [Physics Girl's Coulomb's Law video](https://www.youtube.com/watch?v=g7D7Tl5PwOQ)
+
+**Numerical Problems with Solutions**
+
+1. Two charged particles with charges +2 μC and -3 μC are placed 8 cm apart. What is the force of attraction between them?
+Answer: F ≈ 6.4 × 10^-7 N
+
+2. A charged particle with a charge of +5 μC is placed 2 cm away from a neutral metal sphere. What is the force of repulsion between them?
+Answer: F ≈ 1.9 × 10^-6 N
+
+**Takeaways**
+
+* Coulomb's Law explains the relationship between two charged particles.
+* The law is proportional to the product of their charges and inversely proportional to the square of the distance between them.
+
+**Urdu Response**
+
+**مرحومہ**
+ Coulomb's Law کوئی فنomena ہے جس کا تعلق دو چارجڈ ذرات سے ہوتا ہے۔ یہ ایک Fundamental Force ہے جو Electric Charges اور Forces کا تعلق ظاہر کرتا ہے۔
+
+**مراجع**
+
+* فیونمن، ایچ پی (1963)۔ The Feynman Lectures on Physics۔
+* ہالیڈے، ڈی، ریسنک، آر، اور والکر، جے (2013)۔ Fundamentals of Physics۔
+* Гриффیتز، ڈی جی (2008)۔ Introduction to Electrodynamics۔
+
+**تفصیلی جواب**
+ Coulomb's Law کا تعلق دو چارجڈ ذرات کے درمیان کی Force سے ہوتا ہے جس کو پھرچر کہتے ہیں۔ یہ قانون ریاضی طور پر مندرجہ قرار دیتا ہے:
+
+F = k \* (q1 \* q2) / r^2
+
+جہاں F Force ہے، ک کو Coulomb's Constant ہے، q1 اور q2 چارجڈ ذرات کے چارج ہیں اور ر درمیان کی DISTANCE ہے۔
+
+**مثال 1: دو مشابہ چارجڈ گولے**
+ Suppose ہوں کہ دو مشابہ چارجڈ گولے ہیں جو ایک ساتھ +3 μC کے چارج ہیں۔ اگر وہ 5 سینٹمپرچ چھوڑتے ہیں تو ان میں درمیان کی Force کیا ہے؟
+
+استعمال Coulomb's Law، ہم Force کا حساب لیتے ہیں:
+
+F = k \* (3 μC) ^2 / (0.05 m) ^2
+
+F ≈ 9.8 × 10^-7 N
+
+**مثال 2: چارجڈ ذرات اور غیر فعال گولے**
+ ایک چارجڈ ذرات کا چارج -5 μC ہے جو ایک غیر فعال متال گولے سے 1 سینٹمپرچ چھوڑتا ہے تو درمیان کی Force کیا ہے؟
+
+استعمال Coulomb's Law، ہم Force کا حساب لیتے ہیں:
+
+F = k \* (-5 μC) \* (0) / (0.01 m) ^2
+
+F ≈ 0 N
+
+**related Questions with Answers**
+
+Q: کوئی Fundamental Forces Physics میں Coulomb's Law سے تعلق ہے؟
+A: Coulomb's Law ایک Fundamental Force Physics میں ہے جو Electric Charges اور Forces کا تعلق ظاہر کرتا ہے۔
+
+Q: Coulomb's Law کوئی روزمرہ زندگی میں Applications کیا ہے؟
+A: Coulomb's Law نے Electric Motors، Generators اور Transformers میں Applications کیا ہے۔
+
+** Images**
+
+[Image 1: Diagram showing two charged particles interacting]
+[Image 2: Graph illustrating the relationship between distance and force]
+
+**Separate List of Images**
+
+1. [Diagram showing two charged particles interacting]
+2. [Graph illustrating the relationship between distance and force]
+
+**Videos**
+[Coulomb's Law explanation video by 3Blue1Brown](https://www.youtube.com/watch?v=7Gk6Wj9iM4E)
+
+**Separate List of References Videos**
+
+1. [Coulomb's Law explanation video by 3Blue1Brown](https://www.youtube.com/watch?v=7Gk6Wj9iM4E)
+2. [Physics Girl's Coulomb's Law video](https://www.youtube.com/watch?v=g7D7Tl5PwOQ)
+
+**Numerical Problems with Solutions**
+
+1. دو چارجڈ ذرات کے چارج +2 μC اور -3 μC ہیں جو ایک ساتھ 5 سینٹمپرچ چھوڑتے ہیں تو ان میں درمیان کی Force کیا ہے؟
+
+استعمال Coulomb's Law، ہم Force کا حساب لیتے ہیں:
+
+F = k \* (2 μC) ^2 / (5 m) ^2
+
+F ≈ 1.6 × 10^-6 N
